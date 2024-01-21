@@ -11,4 +11,12 @@ MERN-STACK-REDUX
 -> npm i @reduxjs/toolkit
 5. INSTALL BOOTSTRAP
 -> npm install react-bootstrap bootstrap
-6. 
+6. INSTALL API PROMISE-BASED HTTP LIBRARY
+-> npm i axios
+7. INSTALL MONGODB  
+-> mongodb compass 
+8. INSTALLING THE NEEDED FOR SERVERSIDE 
+-> npm i cors (cross origin resource Sharing)
+-> npm i express (emanage ang servers ug routes)
+-> npm i i mongoose
+-> npm i nodemon
