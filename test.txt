@@ -7,4 +7,8 @@ MERN-STACK-REDUX
 ->npm i
 4. RUN THE CLIENTSIDE
 ->npm run dev (for vite)
-5.
+5. INSTALL REDUX TOOLKIT
+-> npm i @reduxjs/toolkit
+5. INSTALL BOOTSTRAP
+-> npm install react-bootstrap bootstrap
+6. 
