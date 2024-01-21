@@ -1,1 +1,10 @@
-Choi!
+MERN-STACK-REDUX 
+
+1.CREATE A FOLDER FOR THIS PROJECT
+2.INSTALL VITE
+->npx create-react .
+3.INSTALL NODE PACKAGES
+->npm i
+4. RUN THE CLIENTSIDE
+->npm run dev (for vite)
+5.
