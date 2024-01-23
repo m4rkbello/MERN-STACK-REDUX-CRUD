@@ -1,21 +1,46 @@
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+//reducers
+import { getUser } from "./redux/userSlice";
+
+
 
 function Users() {
 
+  //dispatch
+  const dispatch = useDispatch()
+  
+  //useSelector kuhaon ang data
+  const users = useSelector(state => state.users.users)
+  console.log("HOY",useSelector(state => state.users.users));
+
+
+
 //pagfetch ug data gikan sa BACKEND
+// ...
+
 useEffect(() => {
   const fetchData = async() => {
     try {
-      const response = await axios.get("");
+      const response = await axios.get('http://127.0.0.1:3000');
+      console.log(response.data);
+      dispatch(getUser(response.data));
     } catch(err){
-        console.log(err)
+      console.error("AxiosError:", err.message); // Log the error message
     }   
-  }
-  fetchData();
+  };
 
+  fetchData();
 }, []);
+
+
+
+
+
+
 
 
 
@@ -32,7 +57,21 @@ useEffect(() => {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>{/* Add your table rows here */}</tbody>
+          <tbody>
+          {
+            users.map(user => {
+              return<tr key={user._id}>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>{user.age}</td>
+                    <td>
+                      <button className="btn btn-sm btn-warning">Update</button>
+                      <button>Delete</button>
+                    </td>
+              </tr>
+            })
+          }
+          </tbody>
         </table>
       </div>
     </div>

@@ -20,3 +20,5 @@ MERN-STACK-REDUX
 -> npm i express (emanage ang servers ug routes)
 -> npm i i mongoose
 -> npm i nodemon
+9. INSTALL REDUX-THUNK
+-> npm install redux-thunk
