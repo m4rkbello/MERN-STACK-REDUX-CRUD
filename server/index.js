@@ -19,7 +19,7 @@ mongoose.connection.on('error', (err) => {
   console.error('MongoDB connection error:', err);
 });
 
-
+//fetch data
 app.get('/', (req, res) => {
   UserModel.find()
     .then(users => {
@@ -32,6 +32,14 @@ app.get('/', (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     });
 });
+
+
+//add data
+app.post('/create', (req, res) => {
+  UserModel.create(req.body)
+  .then(user => res.json(user))
+  .catch(err => res.json(err))
+})
 
 
 app.listen(3000, () => {

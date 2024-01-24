@@ -1,40 +1,13 @@
-import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
-//reducers
-import { getUser } from "./redux/userSlice";
-
 
 
 function Users() {
 
-  //dispatch
-  const dispatch = useDispatch()
-  
   //useSelector kuhaon ang data
-  const user = useSelector(state => state.users.users)
+  const users = useSelector(state => state.users.users)
   console.log("HOY",useSelector(state => state.users.users));
-
-
-
-//pagfetch ug data gikan sa BACKEND
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const response = await axios.get('http://127.0.0.1:3000');
-      console.log("Axios Response:", response);
-      dispatch(getUser(response.data));
-    } catch (err) {
-      console.error("AxiosError:", err.message);
-    }
-  };
-
-  fetchData();
-}, []);
-
 
   return (
     <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">
@@ -53,13 +26,13 @@ useEffect(() => {
           </thead>
           <tbody>
           {
-            user.map(user => {
+            users.map(user => {
               return<tr key={user.id}>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>{user.age}</td>
                     <td>
-                      <button className="btn btn-sm btn-warning me-2">Update</button>
+                      <Link to={`/update/${user.id}`} className="btn btn-sm btn-warning me-2">Update</Link>
                       <button className="btn btn-sm btn-danger me-2">Delete</button>
                     </td>
               </tr>
