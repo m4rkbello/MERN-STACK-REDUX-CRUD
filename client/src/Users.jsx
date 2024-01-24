@@ -14,7 +14,7 @@ function Users() {
   const dispatch = useDispatch()
   
   //useSelector kuhaon ang data
-  const users = useSelector(state => state.users.users)
+  const user = useSelector(state => state.users.users)
   console.log("HOY",useSelector(state => state.users.users));
 
 
@@ -23,19 +23,18 @@ function Users() {
 // ...
 
 useEffect(() => {
-  const fetchData = async() => {
+  const fetchData = async () => {
     try {
       const response = await axios.get('http://127.0.0.1:3000');
-      console.log(response.data);
+      console.log("Axios Response:", response);
       dispatch(getUser(response.data));
-    } catch(err){
-      console.error("AxiosError:", err.message); // Log the error message
-    }   
+    } catch (err) {
+      console.error("AxiosError:", err.message);
+    }
   };
 
   fetchData();
 }, []);
-
 
 
 
@@ -59,8 +58,8 @@ useEffect(() => {
           </thead>
           <tbody>
           {
-            users.map(user => {
-              return<tr key={user._id}>
+            user.map(user => {
+              return<tr key={user.id}>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>{user.age}</td>

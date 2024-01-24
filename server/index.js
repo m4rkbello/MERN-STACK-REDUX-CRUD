@@ -21,13 +21,21 @@ mongoose.connection.on('error', (err) => {
 
 
 app.get('/', (req, res) => {
-    UserModel.find()
-        .then(users => {
-            console.log(users); // Log the fetched data
-            res.json(users);
-        })
-        .catch(err => res.json(err))
+  UserModel.find()
+    .then(users => {
+      console.log("RETURN OY", users); // Log the fetched data
+      res.setHeader('Content-Type', 'application/json');
+      res.json(users);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    });
 });
+
+
+
+
 
 app.listen(3000, () => {
     console.log("SERVER IS RUNNING!");
