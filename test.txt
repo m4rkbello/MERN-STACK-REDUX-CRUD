@@ -22,3 +22,5 @@ MERN-STACK-REDUX
 -> npm i nodemon
 9. INSTALL REDUX-THUNK
 -> npm install redux-thunk
+10. INSTALL REACT-ROUTER-DOM 
+->npm i react-router-dom

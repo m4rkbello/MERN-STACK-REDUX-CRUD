@@ -2,6 +2,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 //reducers
 import { getUser } from "./redux/userSlice";
@@ -20,8 +21,6 @@ function Users() {
 
 
 //pagfetch ug data gikan sa BACKEND
-// ...
-
 useEffect(() => {
   const fetchData = async () => {
     try {
@@ -37,16 +36,12 @@ useEffect(() => {
 }, []);
 
 
-
-
-
-
-
-
   return (
     <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">
       <div className="w-50 bg-white rounded p-3">
-        <button className="btn btn-success btn-sm">Add +</button>
+        <Link to="/create" className="btn btn-success btn-sm">
+        Add +
+        </Link>
         <table className="table">
           <thead>
             <tr>
@@ -64,8 +59,8 @@ useEffect(() => {
                     <td>{user.email}</td>
                     <td>{user.age}</td>
                     <td>
-                      <button className="btn btn-sm btn-warning">Update</button>
-                      <button>Delete</button>
+                      <button className="btn btn-sm btn-warning me-2">Update</button>
+                      <button className="btn btn-sm btn-danger me-2">Delete</button>
                     </td>
               </tr>
             })
