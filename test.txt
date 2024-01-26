@@ -24,3 +24,5 @@ MERN-STACK-REDUX
 -> npm install redux-thunk
 10. INSTALL REACT-ROUTER-DOM 
 ->npm i react-router-dom
+11. INSTALL TOASTIFY!
+
