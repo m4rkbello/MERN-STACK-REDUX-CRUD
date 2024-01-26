@@ -25,4 +25,5 @@ MERN-STACK-REDUX
 10. INSTALL REACT-ROUTER-DOM 
 ->npm i react-router-dom
 11. INSTALL TOASTIFY!
+->npm install --save react-toastify
 
