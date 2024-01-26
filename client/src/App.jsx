@@ -19,7 +19,7 @@ function App() {
     // console.log("HOY",useSelector(state => state.users.users));
 
 
-  //pagfetch ug data gikan sa BACKEND
+//pagfetch ug data gikan sa BACKEND
 useEffect(() => {
   const fetchData = async () => {
     try {
