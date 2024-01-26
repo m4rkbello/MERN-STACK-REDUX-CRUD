@@ -7,6 +7,9 @@ import CreateUser from './CreateUser'
 import UpdateUser from './UpdateUser'
 import { useDispatch} from 'react-redux'
 import { getUser } from './redux/userSlice'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function App() {
@@ -37,8 +40,9 @@ useEffect(() => {
   return (
     <div>
       <Router>
+      <ToastContainer />
         <Routes>
-          <Route exact path='/' element={<Users />} />
+          <Route exact path='/users' element={<Users />} />
           <Route exact path='/create' element={<CreateUser />} />
           <Route exact path='/update/:id' element={<UpdateUser />} />
         </Routes>
