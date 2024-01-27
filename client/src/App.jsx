@@ -17,10 +17,6 @@ function App() {
     //dispatch
     const dispatch = useDispatch()
   
-    //useSelector kuhaon ang data
-    // const users = useSelector(state => state.users.users)
-    // console.log("HOY",useSelector(state => state.users.users));
-
 
 //pagfetch ug data gikan sa BACKEND
 useEffect(() => {
@@ -42,7 +38,7 @@ useEffect(() => {
       <Router>
       <ToastContainer />
         <Routes>
-          <Route exact path='/users' element={<Users />} />
+          <Route exact path='/' element={<Users />} />
           <Route exact path='/create' element={<CreateUser />} />
           <Route exact path='/update/:id' element={<UpdateUser />} />
         </Routes>

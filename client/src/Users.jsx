@@ -21,12 +21,13 @@ function Users() {
   const handleDelete = (id) => {
     axios.delete(`http://127.0.0.1:3000/delete/${id}`)
     .then(res => {
-      toast.success('User added successfully!');
+   
       dispatch(deleteUser({ id }));
+      toast.success('User deleted successfully!');
 
       console.log(res);
     }).catch(err =>{
-      toast.error('User added successfully!');
+      toast.error('User has been not deleted!');
       console.log((err));
     });
 }
@@ -34,7 +35,7 @@ function Users() {
 
 
   return (
-    <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">
+    <div className="d-flex vh-100 bg-info justify-content-center align-items-center">
     <ToastContainer />
       <div className="w-50 bg-white rounded p-3">
         <Link to="/create" className="btn btn-success btn-sm">
