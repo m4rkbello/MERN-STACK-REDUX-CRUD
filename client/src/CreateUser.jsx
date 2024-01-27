@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 //useNavigate after ma click ang button mo adto sa home
 import { useNavigate } from "react-router-dom";
 
+//para sa notification //toastify
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -29,26 +30,16 @@ const handleSubmit = async (e) => {
 
     try {
         const response = await axios.post('http://127.0.0.1:3000/create', { name, email, age });
+        toast.success('User added successfully!');
         dispatch(addUser(response.data));
         navigate('/users');
-        toast.success('User added successfully!');
+      
         console.log(response);
     } catch (error) {
+        toast.error('Failed to add user: An unexpected error occurred.');
         console.error("Error during request:", error);
-
-        if (error.message === "Network Error") {
-            toast.error('Failed to add user: Network Error. Please check your internet connection.');
-        } else if (error.response) {
-            toast.error(`Failed to add user: ${error.response.data.message}`);
-        } else {
-            toast.error('Failed to add user: An unexpected error occurred.');
-        }
     }
 };
-
-
-
-
 
     return (
         <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">

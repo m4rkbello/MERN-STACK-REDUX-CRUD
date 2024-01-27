@@ -1,6 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import { deleteUser } from "./redux/userSlice";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function Users() {
@@ -9,8 +14,28 @@ function Users() {
   const users = useSelector(state => state.users.users)
   console.log("HOY",useSelector(state => state.users.users));
 
+  const dispatch = useDispatch();
+
+
+  //pag-delete ug user
+  const handleDelete = (id) => {
+    axios.delete(`http://127.0.0.1:3000/delete/${id}`)
+    .then(res => {
+      toast.success('User added successfully!');
+      dispatch(deleteUser({ id }));
+
+      console.log(res);
+    }).catch(err =>{
+      toast.error('User added successfully!');
+      console.log((err));
+    });
+}
+
+
+
   return (
     <div className="d-flex vh-100 bg-primary justify-content-center align-items-center">
+    <ToastContainer />
       <div className="w-50 bg-white rounded p-3">
         <Link to="/create" className="btn btn-success btn-sm">
         Add +
@@ -26,14 +51,15 @@ function Users() {
           </thead>
           <tbody>
           {
-            users.map(user => {
-              return<tr key={user.id}>
+            users.map((user, index) => {
+              return<tr key={index}>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>{user.age}</td>
                     <td>
                       <Link to={`/update/${user.id}`} className="btn btn-sm btn-warning me-2">Update</Link>
-                      <button className="btn btn-sm btn-danger me-2">Delete</button>
+                     <button onClick={() => handleDelete(user.id)} className="btn btn-sm btn-danger me-2">Delete</button>
+
                     </td>
               </tr>
             })
