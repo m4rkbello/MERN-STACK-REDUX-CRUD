@@ -37,9 +37,18 @@ function Users() {
   return (
     <div className="d-flex vh-100 bg-info justify-content-center align-items-center">
     <ToastContainer />
-      <div className="w-50 bg-white rounded p-3">
+  
+
+      <div className="w-70 bg-white rounded p-3">
+      <div className="d-flex justify-content-end mt-3">
+      <h1><center>
+      CRUD-MERN-STACK W/ RTK AND AXIOS
+      </center>
+     </h1>
+      </div>
+      <br />
         <Link to="/create" className="btn btn-success btn-sm">
-        Add +
+        Add User
         </Link>
         <table className="table">
           <thead>
